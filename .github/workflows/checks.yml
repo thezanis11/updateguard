@@ -1,0 +1,33 @@
+name: checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.14']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install locked dependencies
+        run: python -m pip install --require-hashes --only-binary=:all: -r requirements-lock.txt
+      - name: Verify dependency consistency
+        run: python -m pip check
+      - name: Check published result provenance
+        run: python scripts/check_report.py
+      - name: Test protocol, HTTP and process crash recovery
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce one experiment repetition
+        run: python -m updateguard.cli benchmark --repetitions 1 --out data/ci-report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-${{ matrix.os }}-${{ matrix.python }}
+          path: data/ci-report

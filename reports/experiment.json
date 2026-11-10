@@ -1,0 +1,48 @@
+{
+  "project": "UpdateGuard",
+  "schema_version": 1,
+  "generated_utc": "2026-11-10T13:28:18.726486+00:00",
+  "python": "3.14.0",
+  "platform": "Windows",
+  "packages": {
+    "tuf": "7.0.1",
+    "securesystemslib": "1.6.0",
+    "cryptography": "50.0.2",
+    "urllib3": "2.8.0",
+    "cffi": "2.1.1",
+    "pycparser": "3.12"
+  },
+  "protocol": "protocol-v1",
+  "repetitions": 3,
+  "elapsed_seconds": 29.01,
+  "parent_peak_memory_bytes": 43900928,
+  "memory_scope": "Parent process only; excludes sequential child processes",
+  "security_cases": 135,
+  "recovery_cases": 30,
+  "security_expectations_met": true,
+  "recovery_invariants_met": true,
+  "source_sha256": {
+    "updateguard/__init__.py": "15306b76cc98a6fbfc5ad815dd5a743d7a9b9ff437cad47db6aa9cb80d2342ee",
+    "updateguard/cli.py": "0d19abb1fbed6c142ae426e80310c52c19c9fdb9341613d62befcd8a771ce8e4",
+    "updateguard/client.py": "07f4a985c54fbcec3a5f239c8cb0e094abc7591279da01e78eee9e4096be3799",
+    "updateguard/common.py": "e657e1336427938081c0e2dd8e7a41d0776b8a59ed00dfdfb143947ad76b57af",
+    "updateguard/device.py": "449704c1eeec4326ecc8da830f70521872dc75e8f5c6a85f080f30fc09fa63ac",
+    "updateguard/experiments.py": "bc53a2a2711cb8ab404f0026bbdcc01d7d31b2b7d99a29d5000e96f3e4b1a227",
+    "updateguard/report.py": "d339d48c5d8f404c5b9304020b912fd66ff39df24b23bcdc3d38727856192c00",
+    "updateguard/repository.py": "edf8ed3b5f7adc64e45fe5b3812c06bf7ed8feb305675168a031c719c9e1ecaf",
+    "updateguard/resources.py": "87da7324d171c305320ae33711f3172bfc8d5aa36e98467a22e05badba0d2d11",
+    "updateguard/scenarios.py": "17865ecb31dcf35557d25356f32cc9dc2076981a91502c12d2b3b3a99149034f"
+  },
+  "output_sha256": {
+    "security.csv": "178374703b2c5ccd84a8f46b5d43c47606a323d6af91d9c6aa0950e387a247c7",
+    "recovery.csv": "79199e8528b53e04d7e5f3e1bf8f4a243d28c699b12a9eaebd5fa50d0551dee8"
+  },
+  "limitations": [
+    "Exploratory protocol tests, not real attack probabilities",
+    "Repeated cases are timing repetitions, not independent threats",
+    "Process termination at durable boundaries, not physical power loss",
+    "In-memory transport timing includes disk I/O, not network latency",
+    "Synthetic artifacts; health is a modeled boolean",
+    "Ephemeral random signing keys; outputs need not be bit-identical"
+  ]
+}

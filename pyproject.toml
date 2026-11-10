@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "updateguard-lab"
+version = "0.1.0"
+description = "Reproducible secure-update and crash-recovery experiments"
+requires-python = ">=3.11"
+dependencies = ["tuf==7.0.1", "cryptography==50.0.2"]
+
+[project.scripts]
+updateguard = "updateguard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["updateguard*"]
